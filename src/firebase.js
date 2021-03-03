@@ -1,12 +1,12 @@
 import firebase from 'firebase';	
 
 const firebaseConfig = {	
-    apiKey: "AIzaSyDjh0IF1LsnMS7dcKf3Rf2Z04tF6hQ_dfo",
-    authDomain: "treinazap.firebaseapp.com",
-    projectId: "treinazap",
-    storageBucket: "treinazap.appspot.com",
-    messagingSenderId: "440247512162",
-    appId: "1:440247512162:web:67eb02205337e8e011353b"
+    apiKey: "AIzaSyCfaSTLFBcxo10bnJeRgXf4Sl4GRJHCk5s",
+    authDomain: "zipzop-da7b8.firebaseapp.com",
+    projectId: "zipzop-da7b8",
+    storageBucket: "zipzop-da7b8.appspot.com",
+    messagingSenderId: "997382589406",
+    appId: "1:997382589406:web:cebffbdfc7cd5b9e4deb4f"
 };	
 
 const firebaseApp = firebase.initializeApp(firebaseConfig);	
