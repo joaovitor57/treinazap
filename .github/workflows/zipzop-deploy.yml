@@ -11,8 +11,9 @@ jobs:
       - uses: dopplerhq/cli-action@v1
       - name: SET ENVS AGENT GIT HUB ACTIONS
         run: doppler secrets download --no-file --format=docker >> $GITHUB_ENV;
+   
         env:
-          TOKEN_DOPPLER: ${{ secrets.DOPPLER_TOKEN }}
+          DOPPLER_TOKEN: ${{ secrets.DOPPLER_TOKEN_PROD }}
 
 
       - uses: actions/setup-node@v1
