@@ -30,6 +30,12 @@ jobs:
         run: npm install && npm run build
         env:
            CI: "false"
+
+      - name: BAIXANDO SONAR
+        run: wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.6.0.2311-linux.zip && unzip sonar-scanner-cli-4.6.0.2311-linux.zip
+      - name: ANALYSYS CODE
+        run: ./sonar-scanner-4.6.0.2311-linux/bin/sonar-scanner -Dsonar.projectKey=zipzop -Dsonar.sources=. -Dsonar.host.url=http://sonar.zipzop.tk/ -Dsonar.login=3e141c9e19317de0eb3de5ba70cf8e353518da97
+
       - name: DEPLOY S3
         run: cd build && AWS_ACCESS_KEY_ID=${ACCESS_KEY} AWS_SECRET_ACCESS_KEY=${SECRET_KEY} aws s3 sync . s3://zipzop --acl public-read --delete
         
