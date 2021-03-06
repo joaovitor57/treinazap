@@ -43,6 +43,10 @@ jobs:
           aws-secret-access-key: ${{ env.SECRET_KEY }}
           aws-region: us-east-1
 
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v1
+        
       - name: Build, tag, and push image to Amazon ECR
         id: build-image
         env:
@@ -50,15 +54,11 @@ jobs:
           ECR_REPOSITORY: 548018428434.dkr.ecr.us-east-1.amazonaws.com/zipzop
           IMAGE_TAG: ${{ github.sha }}
         run: |
-          docker build -t zipzop
+          docker build -t zipzop .
           docker tag zipzop:latest $ECR_REPOSITORY:latest
           docker push $ECR_REPOSITORY:latest
           aws ecs update-service --cluster unicorniostech --service zipzop --force-new-deployment --region us-east-1
 
-
-      - name: Login to Amazon ECR
-        id: login-ecr
-        uses: aws-actions/amazon-ecr-login@v1
 
 
 
