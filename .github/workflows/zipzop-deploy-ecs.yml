@@ -46,7 +46,7 @@ jobs:
       - name: Login to Amazon ECR
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v1
-        
+
       - name: Build, tag, and push image to Amazon ECR
         id: build-image
         env:
@@ -57,11 +57,7 @@ jobs:
           docker build -t zipzop .
           docker tag zipzop:latest $ECR_REPOSITORY:latest
           docker push $ECR_REPOSITORY:latest
-          aws ecs update-service --cluster unicorniostech --service zipzop --force-new-deployment --region us-east-1
-
-
-
-
+          aws ecs update-service --cluster clusterzipzop --service zipzop --force-new-deployment --region us-east-1
 
       - name: CLEAR CACHE
         run: AWS_ACCESS_KEY_ID=${ACCESS_KEY} AWS_SECRET_ACCESS_KEY=${SECRET_KEY} aws cloudfront create-invalidation --distribution-id ER02T2U4BN8V5 --path '/*'
