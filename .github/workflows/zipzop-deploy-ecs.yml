@@ -1,4 +1,4 @@
-name: Deploy ZIPZOP - S3
+name: Deploy ZIPZOP - ECS
 
 on:
   workflow_dispatch:
